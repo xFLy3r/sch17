@@ -187,4 +187,37 @@ function books($sql){
 	}
 }
 
+function regular($sql) {
+	$date = date('Y-m-d');
+	$result = mysqli_query($sql, "SELECT * from regular order by date");
+	$i = [false, false, false, false];
+	while ($row = mysqli_fetch_row($result)){
+		if ($i[0] == false){
+			$firstname = $row[1];
+			$i[0] = true;
+		}elseif ($i[1] == false){
+			$secondname = $row[1];
+			$i[1] = true;
+		}
+
+		if ($i[2] == false and $date == $row[2]) {
+			$i[2] = true;
+			$name = $row[1];
+		}elseif ($i[3] == false and $date == $row[2]) {
+			$i[3] = true;
+			$sname = $row[1];
+		break;
+		}
+	}
+	mysqli_free_result($result);
+	if ($i[2] == true and $i[3] == true) {
+		echo $name."1".$sname;
+	}else{
+		$result = mysqli_query($sql, "UPDATE `regular` SET `date` = '$date' WHERE name='$firstname'");
+		mysqli_free_result($result);
+		$result = mysqli_query($sql, "UPDATE `regular` SET `date` = '$date' WHERE name='$secondname'");
+		mysqli_free_result($result);
+		echo $firstname."2".$secondname;
+	}
+}
 ?>
