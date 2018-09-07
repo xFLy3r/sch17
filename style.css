@@ -492,11 +492,3 @@ h3.tname {
 	font-family: "Comic Sans MS";
 	text-align: center;
 }
-
-img.conl {
-	width: 50px;
-	height: 50px;
-	float: right;
-	clear: right;
-	margin: 2%; 
-}
