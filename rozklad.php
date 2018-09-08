@@ -19,10 +19,10 @@
 				</div>
 				<div id='main' class="clearfix">
 					<div id='ltable'>
-						<?timetable($sql, 1);?>
+						<?timetable(1);?>
 					</div>
 					<div id='rtable'>
-						<?timetable($sql, 2);?>
+						<?timetable(2);?>
 					</div>
 				</div>
 			</div>

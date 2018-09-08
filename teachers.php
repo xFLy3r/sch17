@@ -18,7 +18,7 @@
 						<a class='menu brl' href='books.php'><b>Книги</b></a>
 				</div>
 				<div id='main' class="clearfix">
-					<?teachs($sql);?>
+					<?teachs();?>
 				</div>
 			</div>
 		</div>

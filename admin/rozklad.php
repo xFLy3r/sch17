@@ -20,10 +20,10 @@
 				<div id='main' class="clearfix">
 					<form action="homework.php" method="POST" autocomplete="off">
 						<div id='ltable'>
-							<?php timetable($sql, 1, 1);?>
+							<?php timetable(1, 1);?>
 						</div>
 						<div id='rtable'>
-							<?php timetable($sql, 2, 1);?>
+							<?php timetable(2, 1);?>
 							<input type='submit' name='0' class='submit' value='Відправити'>
 						</div>
 					</form>

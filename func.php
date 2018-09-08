@@ -11,7 +11,8 @@ if (!$sql) {
 }
 mysqli_set_charset($sql, "utf8");
 
-function news($sql) {
+function news() {
+	global $sql;
 	$result = mysqli_query($sql, "SELECT * from news ORDER BY -ID");
 	while($row = mysqli_fetch_row($result)) {
 		$date = implode('.', array_reverse(explode('-', $row[2])));
@@ -27,8 +28,8 @@ function news($sql) {
 	mysqli_free_result($result);
 }
 
-
-function Inews($sql, $a, $x=1) {
+function Inews($a, $x=1) {
+	global $sql;
 	switch ($x) {
 		case '1':
 			$result = mysqli_query($sql, "SELECT name from news");
@@ -79,7 +80,8 @@ function sd($dayOrMonth, $a) {
 
 }
 
-function homework($sql, $day, $id, $t=1){
+function homework($day, $id, $t=1){
+	global $sql;
 	$id = $id + 2;
 	$result = mysqli_query($sql, "SELECT * FROM `homework` WHERE id=$day");
 	$row = mysqli_fetch_row($result);
@@ -102,7 +104,8 @@ $mode: if mode is equal to 0 then display everything in default mode(text), othe
  
  
 */
-function timetable($sql, $d, $mode = 0) {
+function timetable($d, $mode = 0) {
+	global $sql;
 	if ($d == 1) {
 		$startingDay = 1;
 		$endingDay=3;
@@ -126,7 +129,7 @@ function timetable($sql, $d, $mode = 0) {
 				$less = explode("<^>", $lesson[$i + 1]); //Проверка, урок поділено на 2 групи (например Англ. Мов.№1<^>Англ. Мов.№2) или нет
 				$homeworkCheck = explode("<^>", $homework[$i + 1]);
 				if ($mode == 1) {
-					$less[0] = less($sql, $less[0], $currentDay, $i); // + select
+					$less[0] = less($less[0], $currentDay, $i); // + select
 					$homeworkCheck[0] = "<input type='text' name='".$currentDay.$i."' class='homework' value='".$homeworkCheck[0]."'>";  // + input
 				}
 				echo "<tr>
@@ -136,7 +139,7 @@ function timetable($sql, $d, $mode = 0) {
 				</tr>";
 				if (count($less) == 2) {
 					if ($mode == 1) {
-						$less[1] = less($sql, $less[1], $currentDay, $i, 1); // + selcet
+						$less[1] = less($less[1], $currentDay, $i, 1); // + selcet
 						$homeworkCheck[1] = "<input type='text' name='".$currentDay.$i."1' class='homework' value='".$homeworkCheck[1]."'>";  // + input
 					}
 					echo "<tr>
@@ -151,7 +154,8 @@ function timetable($sql, $d, $mode = 0) {
 	}
 }
 
-function less($sql, $lesson, $day, $i, $x=0) {
+function less($lesson, $day, $i, $x=0) {
+	global $sql;
 	$str = "<div class='form_sel'><select name='lesson".$day.$i.$x."' class='select'>";
 
 	$result = mysqli_query($sql, "SELECT name from lessons order by name");
@@ -168,7 +172,8 @@ function less($sql, $lesson, $day, $i, $x=0) {
 	return $str;
 }
 
-function teachs($sql) {
+function teachs() {
+	global $sql;
 	$result = mysqli_query($sql, "SELECT * from teachers order by tech");
 	while ($row = mysqli_fetch_row($result)) {			
 		echo "<div class='tdiv'>
@@ -182,7 +187,8 @@ function teachs($sql) {
 	}
 }
 
-function books($sql){
+function books(){
+	global $sql;
 	$result = mysqli_query($sql, "SELECT * from books order by name");
 	while($row = mysqli_fetch_row($result)){
 		echo "<div class='tdiv'>
@@ -196,7 +202,8 @@ function books($sql){
 	}
 }
 
-function regular($sql) {
+function regular() {
+	global $sql;
 	$date = date('Y-m-d');
 	$result = mysqli_query($sql, "SELECT * from regular order by date");
 	$i = [false, false, false, false];

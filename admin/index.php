@@ -27,10 +27,10 @@ else $a=$_GET['news'];?>
 						<div class='news'>
 							<div class='nform_sel'>
 								<select class="iselect">
-									<?php Inews($sql, $a);?>
+									<?php Inews($a);?>
 								</select>
 							</div>
-							<h1 class='news'>Заголовок: <input type='text' name='name' class='homework' required style="width: 30%;" value='<?php $e = Inews($sql, $a, 2)[0]; echo $e?>'></h1>
+							<h1 class='news'>Заголовок: <input type='text' name='name' class='homework' required style="width: 30%;" value='<?php $e = Inews($a, 2)[0]; echo $e?>'></h1>
 							<div class="date"> 
 								<div class="pdate">Дата:</div>
 								<div class='iform_sel'>
@@ -45,7 +45,7 @@ else $a=$_GET['news'];?>
 								</div>
 							</div>
 							<div class='news_text'>
-								<p><textarea name='text' class='txtarea' required><?php $e = Inews($sql, $a, 2)[2]; echo $e?></textarea></p>
+								<p><textarea name='text' class='txtarea' required><?php $e = Inews($a, 2)[2]; echo $e?></textarea></p>
 							</div>
 							<input type='submit' name='0' value='Відправити' class="submit" style="margin-top: 0;">
 							<div class='break'></div>

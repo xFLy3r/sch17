@@ -18,7 +18,7 @@
 						<a class='menu brl' href='books.php'><b>Книги</b></a>
 				</div>
 				<div id='main' class="clearfix">
-					<?books($sql);?>
+					<?books();?>
 					<div class='tdiv2'>
 						<h3 class='tname' style="text-align: center;">
 							Завантажити всі книги

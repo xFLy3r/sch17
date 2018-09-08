@@ -22,7 +22,7 @@
 				</div>-->
 				<div id='main' class="clearfix">
 					<div style="height: 1px;"></div>
-					<?news($sql);?>
+					<?news();?>
 					<div style="height: 1px;"></div>
 				</div>
 			</div>
