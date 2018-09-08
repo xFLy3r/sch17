@@ -5,15 +5,14 @@ $login = 'host2280';
 $password = 'Sanes0Play';
 $db = 'artur_yurko';
 
-$sql = mysqli_connect($host,$login,$password,$db);
-if (!$sql) {
+$GLOBALS['sql'] = mysqli_connect($host,$login,$password,$db);
+if (!$GLOBALS['sql']) {
 	echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
 }
-mysqli_set_charset($sql, "utf8");
+mysqli_set_charset($GLOBALS['sql'], "utf8");
 
 function news() {
-	global $sql;
-	$result = mysqli_query($sql, "SELECT * from news ORDER BY -ID");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT * from news ORDER BY -ID");
 	while($row = mysqli_fetch_row($result)) {
 		$date = implode('.', array_reverse(explode('-', $row[2])));
 		echo "<div class='news'>
@@ -29,10 +28,9 @@ function news() {
 }
 
 function Inews($a, $x=1) {
-	global $sql;
 	switch ($x) {
 		case '1':
-			$result = mysqli_query($sql, "SELECT name from news");
+			$result = mysqli_query($GLOBALS['sql'], "SELECT name from news");
 			echo '<option onClick="blurt(this); getValue(this);" value="1">Нова новина</option>';
 			while ($row = mysqli_fetch_row($result)){
 				if ($a == $row[0]) echo '<option onClick="blurt(this); getValue(this);" selected>'.$row[0].'</option>';
@@ -42,7 +40,7 @@ function Inews($a, $x=1) {
 			break;
 		
 		default:
-			$result = mysqli_query($sql, "SELECT * from news WHERE name='$a'");
+			$result = mysqli_query($GLOBALS['sql'], "SELECT * from news WHERE name='$a'");
 			$row = mysqli_fetch_row($result);
 			mysqli_free_result($result);
 			$date = explode('-', $row[2]);
@@ -81,9 +79,8 @@ function sd($dayOrMonth, $a) {
 }
 
 function homework($day, $id, $t=1){
-	global $sql;
 	$id = $id + 2;
-	$result = mysqli_query($sql, "SELECT * FROM `homework` WHERE id=$day");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT * FROM `homework` WHERE id=$day");
 	$row = mysqli_fetch_row($result);
 	mysqli_free_result($result);
 	switch ($t) {
@@ -105,7 +102,6 @@ $mode: if mode is equal to 0 then display everything in default mode(text), othe
  
 */
 function timetable($d, $mode = 0) {
-	global $sql;
 	if ($d == 1) {
 		$startingDay = 1;
 		$endingDay=3;
@@ -115,10 +111,10 @@ function timetable($d, $mode = 0) {
 	}			// $_day - с какого дня начинаем; $_Day - каким днем заканчиваем
 	for ($currentDay = $startingDay;$currentDay <= $endingDay; $currentDay++) {
 		echo "<div class='table'><table>";
-		$result = mysqli_query($sql, "SELECT * FROM `timetable` where id=$currentDay");
+		$result = mysqli_query($GLOBALS['sql'], "SELECT * FROM `timetable` where id=$currentDay");
 		$lesson = mysqli_fetch_row($result);
 		mysqli_free_result($result);
-		$result = mysqli_query($sql, "SELECT * FROM `homework` WHERE id=$currentDay");
+		$result = mysqli_query($GLOBALS['sql'], "SELECT * FROM `homework` WHERE id=$currentDay");
 		$homework = mysqli_fetch_row($result);
 		mysqli_free_result($result);
 		for ($i = 0;$i <= 8;$i++) {
@@ -155,10 +151,9 @@ function timetable($d, $mode = 0) {
 }
 
 function less($lesson, $day, $i, $x=0) {
-	global $sql;
 	$str = "<div class='form_sel'><select name='lesson".$day.$i.$x."' class='select'>";
 
-	$result = mysqli_query($sql, "SELECT name from lessons order by name");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT name from lessons order by name");
 	while($row = mysqli_fetch_row($result)) {
 		$row = explode("<^>", $row[0]);
 
@@ -173,8 +168,7 @@ function less($lesson, $day, $i, $x=0) {
 }
 
 function teachs() {
-	global $sql;
-	$result = mysqli_query($sql, "SELECT * from teachers order by tech");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT * from teachers order by tech");
 	while ($row = mysqli_fetch_row($result)) {			
 		echo "<div class='tdiv'>
 				<h3 class='tname' style='margin: 2%;'>
@@ -188,8 +182,7 @@ function teachs() {
 }
 
 function books(){
-	global $sql;
-	$result = mysqli_query($sql, "SELECT * from books order by name");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT * from books order by name");
 	while($row = mysqli_fetch_row($result)){
 		echo "<div class='tdiv'>
 			<img src='".$row[2]."' class='img'>
@@ -202,10 +195,9 @@ function books(){
 	}
 }
 
-function regular() {
-	global $sql;
+function onduty() {
 	$date = date('Y-m-d');
-	$result = mysqli_query($sql, "SELECT * from regular order by date");
+	$result = mysqli_query($GLOBALS['sql'], "SELECT * from regular order by date");
 	$i = [false, false, false, false];
 	while ($row = mysqli_fetch_row($result)){
 		if ($i[0] == false){
@@ -229,9 +221,9 @@ function regular() {
 	if ($i[2] == true and $i[3] == true) {
 		echo $name."1".$sname;
 	}else{
-		$result = mysqli_query($sql, "UPDATE `regular` SET `date` = '$date' WHERE name='$firstname'");
+		$result = mysqli_query($GLOBALS['sql'], "UPDATE `regular` SET `date` = '$date' WHERE name='$firstname'");
 		mysqli_free_result($result);
-		$result = mysqli_query($sql, "UPDATE `regular` SET `date` = '$date' WHERE name='$secondname'");
+		$result = mysqli_query($GLOBALS['sql'], "UPDATE `regular` SET `date` = '$date' WHERE name='$secondname'");
 		mysqli_free_result($result);
 		echo $firstname."2".$secondname;
 	}
