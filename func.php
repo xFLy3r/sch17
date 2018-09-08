@@ -112,10 +112,10 @@ function timetable($sql, $d, $mode = 0) {
 	}			// $_day - с какого дня начинаем; $_Day - каким днем заканчиваем
 	for ($currentDay = $startingDay;$currentDay <= $endingDay; $currentDay++) {
 		echo "<div class='table'><table>";
-		$result = mysqli_query($sql, "SELECT * FROM `timetable` where id=$day");
+		$result = mysqli_query($sql, "SELECT * FROM `timetable` where id=$currentDay");
 		$lesson = mysqli_fetch_row($result);
 		mysqli_free_result($result);
-		$result = mysqli_query($sql, "SELECT * FROM `homework` WHERE id=$day");
+		$result = mysqli_query($sql, "SELECT * FROM `homework` WHERE id=$currentDay");
 		$homework = mysqli_fetch_row($result);
 		mysqli_free_result($result);
 		for ($i = 0;$i <= 8;$i++) {
@@ -126,23 +126,23 @@ function timetable($sql, $d, $mode = 0) {
 				$less = explode("<^>", $lesson[$i + 1]); //Проверка, урок поділено на 2 групи (например Англ. Мов.№1<^>Англ. Мов.№2) или нет
 				$homeworkCheck = explode("<^>", $homework[$i + 1]);
 				if ($mode == 1) {
-					$less[0] = less($sql, $less[0], $day, $i); // + select
-					$h[0] = "<input type='text' name='".$day.$i."' class='homework' value='".$h[0]."'>";  // + input
+					$less[0] = less($sql, $less[0], $currentDay, $i); // + select
+					$homeworkCheck[0] = "<input type='text' name='".$currentDay.$i."' class='homework' value='".$homeworkCheck[0]."'>";  // + input
 				}
 				echo "<tr>
 					<td class='".$last[0]." n'>$i.</td>
 					<td class='".$last[1]." b'>$less[0]</td>
-					<td class='".$last[2]." c'>$h[0]</td>
+					<td class='".$last[2]." c'>$homeworkCheck[0]</td>
 				</tr>";
 				if (count($less) == 2) {
 					if ($mode == 1) {
-						$less[1] = less($sql, $less[1], $day, $i, 1); // + selcet
-						$h[1] = "<input type='text' name='".$day.$i."1' class='homework' value='".$h[1]."'>";  // + input
+						$less[1] = less($sql, $less[1], $currentDay, $i, 1); // + selcet
+						$homeworkCheck[1] = "<input type='text' name='".$currentDay.$i."1' class='homework' value='".$homeworkCheck[1]."'>";  // + input
 					}
 					echo "<tr>
 						<td class='".$last[0]." n'></td>
 						<td class='".$last[1]." b'>$less[1]</td>
-						<td class='".$last[2]." c'>$h[1]</td>
+						<td class='".$last[2]." c'>$homeworkCheck[1]</td>
 					</tr>";
 				}
 			}
