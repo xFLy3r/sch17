@@ -23,12 +23,8 @@
 			</div>
 		</div>
 	</body>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 		body.removeChild(document.querySelector('.cbalink'));
 		body.removeChild(document.querySelector('.cumf_bt_form_wrapper'));
-		function blurt(obj){ 
-			$(obj).parent().blur();
-		}
 	</script>
 </html>

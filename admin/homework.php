@@ -1,14 +1,6 @@
 <?php
-$host = 'mysql.zzz.com.ua';
-$login = 'host2280';
-$password = 'Sanes0Play';
-$db = 'artur_yurko';
 
-$sql = mysqli_connect($host,$login,$password,$db);
-if (!$sql) {
-	echo "Не удалось подключиться к MySQL: " . mysqli_connect_error();
-}
-mysqli_set_charset($sql, "utf8");
+include "../mysql.php";
 
 for($day=1; $day<=5; $day++){
 	for($i=1; $i <= 8; $i++){

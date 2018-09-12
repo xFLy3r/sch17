@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<?php include '../func.php';
-if(!isset($_GET['news'])) $a=1;
-else $a=$_GET['news'];?>
+<?php include 'adminFunc.php';
+if(!isset($_GET['news'])) $nameNews="";
+else $nameNews=$_GET['news'];?>
 
 <html>
 	<head>
@@ -13,7 +13,7 @@ else $a=$_GET['news'];?>
 	</head>
 	<body id='body'>
 		<div id='container'>
-			<div id='logo'><img src='/img/untitled1.png' height='100%'></div>
+			<div style="height: 100px;"></div>
 			<div id='condiv'>
 				<div id='menu'>
 						<a class='menu' href='index.php'><b>Новини</b></a>
@@ -23,29 +23,30 @@ else $a=$_GET['news'];?>
 				</div>
 				<div id='main' class="clearfix">
 					<form action='news.php' method='POST' autocomplete='off'>
-						<input type="hidden" name="type" value="<?echo $a;?>">
+						<input type="hidden" name="type" value="<?echo $nameNews;?>">
 						<div class='news'>
 							<div class='nform_sel'>
 								<select class="iselect">
-									<?php Inews($a);?>
+									<?selectNews($nameNews);?>
 								</select>
 							</div>
-							<h1 class='news'>Заголовок: <input type='text' name='name' class='homework' required style="width: 30%;" value='<?php $e = Inews($a, 2)[0]; echo $e?>'></h1>
+							<h1 class='news'>Заголовок: <input type='text' name='name' class='homework' required style='width: 30%;' value='<?
+								echo $nameNews;?>'></h1>
 							<div class="date"> 
 								<div class="pdate">Дата:</div>
 								<div class='iform_sel'>
 									<select name='day' class='iselect'>
-										<?php sd('day', $a);?>
+										<?selectDayOrMonth('day', $nameNews);?>
 									</select>
 								</div>
 								<div class='iform_sel'>
 									<select name='month' class="iselect">
-										<?php sd('month', $a);?>
+										<?selectDayOrMonth('month', $nameNews);?>
 									</select>
 								</div>
 							</div>
 							<div class='news_text'>
-								<p><textarea name='text' class='txtarea' required><?php $e = Inews($a, 2)[2]; echo $e?></textarea></p>
+								<p><textarea name='text' class='txtarea' required><?textAreaNews($nameNews);?></textarea></p>
 							</div>
 							<input type='submit' name='0' value='Відправити' class="submit" style="margin-top: 0;">
 							<div class='break'></div>
@@ -56,7 +57,7 @@ else $a=$_GET['news'];?>
 			</div>
 		</div>
 	</body>
-	<script src="/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 	<script>
 		body.removeChild(document.querySelector('.cbalink'));
 		body.removeChild(document.querySelector('.cumf_bt_form_wrapper'));
@@ -68,10 +69,10 @@ else $a=$_GET['news'];?>
 		function getValue(obj){ 
 			var val = $(obj).val();
 			if(val==1){
-				window.location = 'http://arturyurko1.000webhostapp.com/admin/index.php';
+				window.location = 'http://sch17.pp.ua/admin/index.php';
 			}
 			else{
-				window.location = 'http://arturyurko1.000webhostapp.com/admin/index.php?news='+val;
+				window.location = 'http://sch17.pp.ua/admin/index.php?news='+val;
 			}
 		}
 	</script>
