@@ -48,11 +48,9 @@ function timetable($day) {
 		$result = mysqli_query($GLOBALS['sql'], "SELECT * FROM `timetable` where id=$currentDay");
 		$lesson = mysqli_fetch_row($result);
 		mysqli_free_result($result);
-
 		$result = mysqli_query($GLOBALS['sql'], "SELECT * FROM `homework` WHERE id=$currentDay");
 		$homework = mysqli_fetch_row($result);
 		mysqli_free_result($result);
-		
 		for ($i = 0; $i <= 8; $i++) {
 			if ($i == 8) $css = ['nl', 'bl', 'cl'];
 			else $css = [' ', ' ', ' '];
