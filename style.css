@@ -1,15 +1,19 @@
-﻿/* Media */
+/* Media */
 @media (max-width:500px){
+	
 	#body {
 		margin: 0;
 	}
+
 	a.menu {
 		font-size:20px;
 	}
+
 	#ltable{
 		width: 100%;
 		display: inline-block;
 	}
+
 	#rtable{
 		display: inline-block;
 		width: 100%;
@@ -18,6 +22,7 @@
 	input.submit {
 		margin-top: 10%;
 	}
+
 	/*.download {
 		margin-left: 34%;
 	}*/
@@ -30,7 +35,7 @@
 	div.tdiv {
 		width: 95%;
 	}
-	
+
 	div.tdiv2 {
 		padding-bottom: 2%;
 		width: 95%;
@@ -42,7 +47,10 @@
 	}*/
 }
 
+
+
 @media (min-width:500px){
+	
 	#body {
 		margin: 0;
 	}
@@ -50,15 +58,19 @@
 	a.menu{
 		font-size: 30px;
 	}
+
 	#ltable{
 		width: 49.7%;
 		display: inline-block;
 	}
+
 	#rtable{
 		display: inline-block;
 		width: 50.3%;
 		float: right;
 	}
+
+
 
 	input.submit {
 		margin-top: 27%;
@@ -73,11 +85,14 @@
 		margin-left: 27%;
 		padding-bottom: 2%;
 	}
+
 	h3.tname {
 		margin-top: 0;
 		margin-bottom: 13px;
 		text-align: center;
 	}
+
+
 
 	/*img.img {
 		margin-left: 31%;
@@ -85,12 +100,15 @@
 }
 
 @media (min-width:500px) and (max-width:800px){
+	
 	#container{
 		width: 100%;
 	}
+
 	#body {
 		margin: 0;
 	}
+
 	/*.download {
 		margin-left: 28%;
 	}*/
@@ -98,12 +116,17 @@
 	h3.tname {
 		margin-top: 0;
 	}
+
 }
 
+
+
 @media (min-width:860px) and (max-width:1260px){
+
 	#container {
 		width: 70%;
 	}
+
 	/*.download {
 		margin-left: 21%;
 	}*/
@@ -114,11 +137,16 @@
 	}
 }
 
+
+
 @media (min-width:930px) {
+
 	img.img {
 		margin-left: 0%;
 	}
 }
+
+
 
 @media (min-width:800px) and (max-width:920px) {
 	h3.tname {
@@ -132,6 +160,7 @@
 }
 
 @media (min-width:920px){
+
 	img.img {
 		float: left;
 		margin-left: 0%;
@@ -139,6 +168,7 @@
 }
 
 @media (min-width:1260px){
+
 	#container{
 		width: 48.07%; /* 800/1664 */
 	}
@@ -152,10 +182,10 @@
 	}*/
 }
 
-
 /*All html*/
+
 body:before {
-	background: url(img/sunfon.jpg) no-repeat fixed center;
+	background: url(/img/sunfon.jpg) no-repeat fixed center;
 	content: "";
 	display: block;
 	position: fixed;
@@ -164,6 +194,7 @@ body:before {
 	width: 100%;
 	height: 100%;
 	z-index: -10;
+
 }
 
 #container {
@@ -222,9 +253,13 @@ a.menu {
 	float: left;
 }
 
+
+
 a.brl {
 	border-left: 1px solid White;
 }
+
+
 
 input.submit {
 	background: none;
@@ -278,6 +313,8 @@ select.iselect {
 	width: 100%;
 }
 
+
+
 select.iselect:focus { 
 	color: black;
 }
@@ -286,7 +323,6 @@ div.iform_sel {
 	float: left;
 	margin-left: 10px;
 }
-
 
 div.iform_sel:before {
 	pointer-events: none;
@@ -302,11 +338,12 @@ div.iform_sel:after {
 	margin: 1.8% 0 0 -0.2%;
 }
 
+
+
 div.nform_sel {
 	float: right;
 	margin:  20px;
 }
-
 
 div.nform_sel:before {
 	pointer-events: none;
@@ -339,7 +376,6 @@ div.date {
 	font-size: 20px;
 	margin: 1.3584% 0px 0px 2.7169%; /* 10/736.12 */ /* 20/736.12 */
 	display: inline-block;
-
 }
 
 div.pdate {
@@ -372,13 +408,13 @@ textarea.txtarea {
 	color: white;
 	font-family: "Comic Sans MS";
 	font-size: 15px;
-	}
+}
 
 div.break {
 	height: 10px;
 }
 
-/* Rozklad */
+/* Timetable */
 
 .table {
 	border: 2px solid white;

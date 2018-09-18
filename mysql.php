@@ -1,8 +1,8 @@
 <?
-$host = 'mysql.zzz.com.ua';
-$login = 'host2280';
-$password = 'Sanes0Play';
-$db = 'artur_yurko';
+$host = '';
+$login = '';
+$password = '';
+$db = '';
 
 $GLOBALS['sql'] = mysqli_connect($host,$login,$password,$db);
 if (!$GLOBALS['sql']) {
