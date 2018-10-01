@@ -14,7 +14,7 @@ else $content = index;?>
 			<div style='height: 100px;'></div>
 			<div id='condiv'>
 				<div id='menu'>
-					<a class='menu' href='/SPA'><b>Новини</b></a>
+					<a class='menu' href='/'><b>Новини</b></a>
 					<a class='menu brl' href='?a=timetable'><b>Розклад</b></a>
 					<a class='menu brl' href='?a=teachers'><b>Вчителі</b></a>
 					<a class='menu brl' href='?a=books'><b>Книги</b></a>
