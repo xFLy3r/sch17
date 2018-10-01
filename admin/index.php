@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 
-<?php include 'adminFunc.php';
-if(!isset($_GET['news'])) $nameNews="";
-else $nameNews=$_GET['news'];?>
+<?php include "spa.php";
+if(!isset($_GET["news"])) $secondParameter="";
+else $secondParameter=$_GET["news"];
+if (isset($_GET[a])) $content = $_GET[a];
+else $content = "index";?>
 
 <html>
 	<head>
@@ -16,43 +18,13 @@ else $nameNews=$_GET['news'];?>
 			<div style="height: 100px;"></div>
 			<div id='condiv'>
 				<div id='menu'>
-						<a class='menu' href='index.php'><b>Новини</b></a>
-						<a class='menu brl' href='rozklad.php'><b>Розклад</b></a>
+						<a class='menu' href='/admin'><b>Новини</b></a>
+						<a class='menu brl' href='?a=timetable'><b>Розклад</b></a>
 						<a class='menu brl' href=''><b>Вчителі</b></a>
 						<a class='menu brl' href=''><b>Учні</b></a>
 				</div>
-				<div id='main' class="clearfix">
-					<form action='news.php' method='POST' autocomplete='off'>
-						<input type="hidden" name="type" value="<?echo $nameNews;?>">
-						<div class='news'>
-							<div class='nform_sel'>
-								<select class="iselect">
-									<?selectNews($nameNews);?>
-								</select>
-							</div>
-							<h1 class='news'>Заголовок: <input type='text' name='name' class='homework' required style='width: 30%;' value='<?
-								echo $nameNews;?>'></h1>
-							<div class="date"> 
-								<div class="pdate">Дата:</div>
-								<div class='iform_sel'>
-									<select name='day' class='iselect'>
-										<?selectDayOrMonth('day', $nameNews);?>
-									</select>
-								</div>
-								<div class='iform_sel'>
-									<select name='month' class="iselect">
-										<?selectDayOrMonth('month', $nameNews);?>
-									</select>
-								</div>
-							</div>
-							<div class='news_text'>
-								<p><textarea name='text' class='txtarea' required><?textAreaNews($nameNews);?></textarea></p>
-							</div>
-							<input type='submit' name='0' value='Відправити' class="submit" style="margin-top: 0;">
-							<div class='break'></div>
-						</div>
-					<div style='height: 1px;'></div>
-					</form>
+				<div id='main' class='clearfix'>
+					<?content($content, $secondParameter);?>
 				</div>
 			</div>
 		</div>
@@ -69,10 +41,10 @@ else $nameNews=$_GET['news'];?>
 		function getValue(obj){ 
 			var val = $(obj).val();
 			if(val==1){
-				window.location = 'http://sch17.pp.ua/admin/index.php';
+				window.location = 'http://sch17.pp.ua/admin/';
 			}
 			else{
-				window.location = 'http://sch17.pp.ua/admin/index.php?news='+val;
+				window.location = 'http://sch17.pp.ua/admin/?news='+val;
 			}
 		}
 	</script>

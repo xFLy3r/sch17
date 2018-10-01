@@ -15,7 +15,7 @@ for($day=1; $day<=5; $day++){
 			else 
 				$less[$i - 1] = $_POST['lesson'.$day.$i.'0'].'<^>'.$_POST['lesson'.$day.$i.'1'];
 
-		}elseif ($_POST['lesson'.$day.$i.'0']=='Англ. мов.#1')
+		} elseif ($_POST['lesson'.$day.$i.'0']=='Англ. мов.#1')
 			$less[$i - 1] = 'Англ. мов.#1<^>Англ. мов.#2';
 		elseif ($_POST['lesson'.$day.$i.'0']=='Інформ#1')
 			$less[$i - 1] = 'Інформ#1<^>Інформ#2';
