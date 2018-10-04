@@ -5,7 +5,7 @@
 		margin: 0;
 	}
 
-	a.menu {
+	.menu {
 		font-size:20px;
 	}
 
@@ -55,7 +55,7 @@
 		margin: 0;
 	}
 
-	a.menu{
+	.menu{
 		font-size: 30px;
 	}
 
@@ -243,7 +243,7 @@ body:before {
 	height: 0;  /* сделать высоту 0, чтобы не занимал место */
 }
 
-a.menu {
+.menu {
 	display: block;
 	text-decoration: none;
 	text-align: center;
@@ -255,7 +255,7 @@ a.menu {
 
 
 
-a.brl {
+.brl {
 	border-left: 1px solid White;
 }
 
