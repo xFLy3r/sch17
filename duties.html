@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>9-V</title>
+		<meta charset="utf-8">
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon'>
+		<meta name='viewport' content='width=device-width'>
+		<style type="text/css">
+			.g {
+				text-align: center;
+				width: 50%;
+				border-bottom: 1px solid white;
+			}
+			.p {
+				border-left: 1px solid white;
+			}
+			.j {
+				border-right: 1px solid white;
+			}
+		</style>
+	</head>
+	<body id='body'>
+		<div id='container'>
+			<div style='height: 100px;'></div>
+			<div id='condiv'>
+				<div id='menu'>
+					<a class='menu' href='/'><b>Новини</b></a>
+					<a class='menu brl' href='?a=timetable'><b>Розклад</b></a>
+					<a class='menu brl' href='?a=teachers'><b>Вчителі</b></a>
+					<a class='menu brl' href='?a=books'><b>Книги</b></a>
+				</div>
+				<div id='main' class='clearfix'>
+					<div id='ltable'>
+						<table class="table">
+							<tr><td>
+								<table>
+									<tr>
+										<td class='date' colspan='2'>Понеділок</td>
+									</tr>
+									<tr>
+										<td class='b'>Столова</td>
+										<td class='c j'>Ваганова, Ворона, Ільніцький, Бабсков</td>
+									</tr>
+									<tr>
+										<td class='b'>Списки</td>
+										<td class='c j'>Лобачова, Оратівська</td>
+									</tr>
+									<tr>
+										<td class='b'>Перехід</td>
+										<td class='c j'>Дуброва, Лихолай</td>
+									</tr>
+									<tr>
+										<td class='b'>Вхід</td>
+										<td class='c j'>Кандиба, Бабіцький, Суденко</td>
+									</tr>
+									<tr>
+										<td class='b'>Перевіряючі</td>
+										<td class='c j'>Фурман, Мартинюк</td>
+									</tr>
+								</table>
+							</td></tr>
+							<tr><td>
+								<table>
+								<tr>
+									<tr>
+										<td class='date' colspan='2'>Сходи</td>
+									</tr>
+									<tr>
+										<td class='g p'>Ліво</td>
+										<td class='g p j'>Право (ближче до столової)</td>
+									</tr>
+								</table>
+							</td></tr>
+							<tr><td>
+								<table>
+									<tr>
+										<td class='date' colspan='2'>Етажі</td>
+									</tr>
+									<tr>
+										<td class='b'>3</td>
+										<td class='c j'>Право</td>
+									</tr>
+									<tr>
+										<td class='b'>4</td>
+										<td class='c j'>Право</td>
+									</tr>
+								</table>
+							</td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		body.removeChild(document.querySelector('.cbalink'));
+  		body.removeChild(document.querySelector('.cumf_bt_form_wrapper'));
+	</script>
+</html>
