@@ -1,0 +1,27 @@
+{
+  "name": "sch17",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f0s3/sch17.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f0s3/sch17/issues"
+  },
+  "homepage": "https://github.com/f0s3/sch17#readme",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
