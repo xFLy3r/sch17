@@ -1,6 +1,14 @@
 const app = require('express')();
 const data = require('./data');
 
+class Article {
+    constructor(title, text) {
+        this.title = title;
+        this.text = text;
+        this.date = Date();
+    }
+}
+
 app.get('/', (req, res) => {
     res.send({news: data['news']});
 });
