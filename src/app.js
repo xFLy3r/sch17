@@ -1,5 +1,5 @@
 const app = require('express')();
-const data = require('data');
+const data = require('./data');
 
 app.get('/', (req, res) => {
     res.send({news: data['news']});
