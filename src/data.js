@@ -1,5 +1,16 @@
 module.exports = {
-    news: [],
+    news: [
+        {
+            title: "Чергування",
+            message: "З 05.11 по 09.11 включно наш клас назначили черговим. Переглянути графік чергування можна тут",
+            date: "05.11.2018"
+        },
+        {
+            title: "FreeStyle Day",
+            message: "25 жовтня freestyle day (день без форми). Приходимо в чому захочемо.",
+            date: "24.10.2018"
+        },
+    ],
     schedule: [],
     teachers: [
         { name: "Тихоненко Аліна Миколаївна", subject: "Інформатика №1" },
@@ -8,21 +19,6 @@ module.exports = {
         { name: "Линик Олена Петрівна", subject: "" },
         { name: "Куцевська Інна Вікторівна", subject: "" },
         { name: "Єрмоленко Лариса Анатоліївна", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" },
-        { name: "", subject: "" }
     ],
     books: []
 }
