@@ -28,15 +28,15 @@ app.post(`${baseUrl}news`, (req, res) => {
 });
 
 app.get(`${baseUrl}schedule`, (req, res) => {
-    res.send({news: data['schedule']});
+    res.send({schedule: data['schedule']});
 });
 
 app.get(`${baseUrl}teachers`, (req, res) => {
-    res.send({news: data['teachers']});
+    res.send({teachers: data['teachers']});
 });
 
 app.get(`${baseUrl}books`, (req, res) => {
-    res.send({news: data['books']});
+    res.send({books: data['books']});
 });
 
 app.listen(port, () => { console.log(`application is running on port ${port}.`) });
