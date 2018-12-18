@@ -81,5 +81,24 @@ module.exports = {
         { name: "Гребенюк Людмила Василівна", subject: "Фізкультура" },
         { name: "Смаглюк Юлія Іванівна", subject: "Хімія" }
     ],
-    books: []
+    books: [
+        { image: "http://4book.org/photo/5970/acc6/d13f/4a4e/eb29/3385/main_9090f352fa28e.jpg?1500556485", title: "Інформатика", source: "https://filemanagersch17.000webhostapp.com/Informatics.zip" },
+        { image: "https://portfel.info//_ld/255/25571.jpg", title: "Історія України", source: "https://filemanagersch17.000webhostapp.com/Ukr History.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502697650_algebra-9-klas-ister-2017.jpg", title: "Алгебра", source: "https://filemanagersch17.000webhostapp.com/Algebra.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502694153_angliyska-mova-9-klas-kalinina-2017.jpg", title: "Англійська Мова", source: "https://filemanagersch17.000webhostapp.com/English.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502697865_biologiya-9-klas-anderson-2017.jpg", title: "Біологія", source: "https://filemanagersch17.000webhostapp.com/Biologia.zip" },
+        { image: "http://4book.org/photo/5970/acc6/d13f/4a4e/eb29/3385/main_9090f352fa28e.jpg?1500556485", title: "Всесвітня Історія", source: "https://filemanagersch17.000webhostapp.com/Vsesv History.zip" },
+        { image: "https://portfel.info//_ld/255/25576.jpg", title: "Географія", source: "https://filemanagersch17.000webhostapp.com/Geography.zip" },
+        { image: "https://images.ua.prom.st/948290321_w640_h640_a409.jpg", title: "Геометрія", source: "https://filemanagersch17.000webhostapp.com/Geometry.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502715753_zarubizhna-literatura-9-klas-voloschuk-2017.jpg", title: "Зарубіжна Література", source: "https://filemanagersch17.000webhostapp.com/Zarub Litereature.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502772934_mystectvo-9-klas-masol-2017.jpg", title: "Мистецтво", source: "https://filemanagersch17.000webhostapp.com/Art.zip" },
+        { image: "http://4book.org/photo/5811/b393/eef8/884e/ab01/441e/big_1s37216f1.jpg?1477555091", title: "Основи Здоровя", source: "https://filemanagersch17.000webhostapp.com/Osn Zdor.zip" },
+        { image: "https://images.ua.prom.st/936400141_w640_h640_a384.jpg", title: "Правознавство", source: "https://filemanagersch17.000webhostapp.com/Pravoznavstvo.zip" },
+        { image: "http://4book.org/photo/59a7/bb67/2b1f/9474/f72b/bf4a/big_25049472587.jpg?1504164711", title: "Технології Для Дівчат", source: "https://filemanagersch17.000webhostapp.com/Trudi F.zip" },
+        { image: "https://pidruchnyk.com.ua/uploads/posts/2017-08/1502869423_trudove-navchannya-9-klas-lebedev-2017.jpg", title: "Технології Для Хлопців", source: "https://filemanagersch17.000webhostapp.com/Trudi M.zip" },
+        { image: "https://portfel.info//_ld/256/25638.jpg", title: "Українська Література", source: "https://filemanagersch17.000webhostapp.com/Ukr Lit.zip" },
+        { image: "https://mozok.click/uploads/posts/2017-10/1508100933_x-ukr-mova-glazova.jpg", title: "Українська Мова", source: "https://filemanagersch17.000webhostapp.com/Ukr Mov.zip" },
+        { image: "https://images.ua.prom.st/1118925784_w640_h640_t470145r.jpg", title: "Фізика", source: "https://filemanagersch17.000webhostapp.com/Physics.zip" },
+        { image: "http://4book.org/photo/5970/8779/d13f/4a4e/f229/33a7/big_abda66d64de.jpg?1500546937", title: "Хімія", source: "https://filemanagersch17.000webhostapp.com/Chemistry.zip" }
+    ]
 }
