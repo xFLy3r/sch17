@@ -1,42 +1,67 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors')();
+const config = require('../config/configuration.service');
+const routes = config.routes;
 
 const data = require('./data');
-const baseUrl = '/api/';
-const port = 4201;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors);
 
-app.get(`${baseUrl}`, (req, res) => {
+app.get(routes.homepage, (req, res) => {
     res.send({news: data['news']});
 });
 
-app.get(`${baseUrl}news`, (req, res) => {
+app.get(routes.news, (req, res) => {
     res.send({news: data['news']});
 });
 
-app.post(`${baseUrl}news`, (req, res) => {
-    if (req.body.title === undefined || req.body.text === undefined) {
-        res.status(500).send({});
-    } else {
+app.get(routes.schedule, (req, res) => {
+    res.send({schedule: data['schedule']});
+});
+
+app.get(routes.teachers, (req, res) => {
+    res.send({teachers: data['teachers']});
+});
+
+app.get(routes.books, (req, res) => {
+    res.send({books: data['books']});
+});
+
+let isLogged = false;
+
+app.get(routes.adminStatus, (req, res) => {
+    console.log(isLogged);
+    res.send({ "isLogged": isLogged })
+});
+
+app.post(routes.adminLogin, (req, res) => {
+    if (req.body.login === adminCredentials.login &&
+    req.body.password === adminCredentials.password && !isLogged) {
+        isLogged = true;
+    }
+    isLogged ? res.sendStatus(200): res.sendStatus(500);
+});
+
+app.post(routes.adminLogout, (req, res) => {
+    if (req.body.login === adminCredentials.login &&
+        req.body.password === adminCredentials.password && isLogged) {
+        isLogged = false;
+        res.sendStatus(200);
+    }
+});
+
+app.post(routes.adminCreatePost, (req, res) => {
+    if (req.body.title === undefined || req.body.text === undefined || !isLogged) {
+        res.sendStatus(500);
+    } else if (isLogged) {
         data['news'].push({"title": req.body.title, "text": req.body.text, "date": Date()});
         res.status(202).send({"title": req.body.title, "text": req.body.text, "date": Date()});
     }
 });
 
-app.get(`${baseUrl}schedule`, (req, res) => {
-    res.send({schedule: data['schedule']});
-});
+// TODO: change hometasks or schedule
 
-app.get(`${baseUrl}teachers`, (req, res) => {
-    res.send({teachers: data['teachers']});
-});
-
-app.get(`${baseUrl}books`, (req, res) => {
-    res.send({books: data['books']});
-});
-
-app.listen(port, () => { console.log(`application is running on port ${port}.`) });
+app.listen(config.application.port, () => { console.log(`application is running on port ${config.application.port}.`) });
