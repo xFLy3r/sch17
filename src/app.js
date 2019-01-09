@@ -37,16 +37,17 @@ app.get(routes.admin.status, (req, res) => {
 });
 
 app.post(routes.admin.login, (req, res) => {
-    if (req.body.login === adminCredentials.login &&
-    req.body.password === adminCredentials.password && !isLogged) {
+    if (req.body.login === config.admin.login &&
+    req.body.password === config.admin.password && !isLogged) {
         isLogged = true;
+        console.log(req.ip);
     }
     isLogged ? res.sendStatus(200): res.sendStatus(500);
 });
 
 app.post(routes.admin.logout, (req, res) => {
-    if (req.body.login === adminCredentials.login &&
-        req.body.password === adminCredentials.password && isLogged) {
+    if (req.body.login === config.admin.login &&
+        req.body.password === config.admin.password && isLogged) {
         isLogged = false;
         res.sendStatus(200);
     }
