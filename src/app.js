@@ -42,7 +42,7 @@ app.post(routes.admin.login, (req, res) => {
         isLogged = true;
         console.log(req.ip);
     }
-    isLogged ? res.sendStatus(200): res.sendStatus(500);
+    isLogged ? res.send({status: "OK"}).status(200):res.send({status: "Login or password is incorrect"}).status(500);
 });
 
 app.post(routes.admin.logout, (req, res) => {
