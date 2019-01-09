@@ -1,13 +1,18 @@
+this.baseUrl = '/api/';
+this.adminBaseUrl = `${this.baseUrl}admin/`;
+
 module.exports = {
-    baseUrl: '/api/',
-    adminBaseUrl: `${this.baseUrl}admin/`,
-    homepage: `${baseUrl}`,
-    news: `${baseUrl}/news`,
-    schedule: `${baseUrl}schedule`,
-    teachers: `${baseUrl}teachers`,
-    books: `${baseUrl}books`,
-    adminStatus: `${adminBaseUrl}status`,
-    adminLogin: `${adminBaseUrl}login`,
-    adminLogout: `${adminBaseUrl}logout`,
-    adminCreatePost: `${adminBaseUrl}news`
+    baseUrl: this.baseUrl,
+    adminBaseUrl: this.adminBaseUrl,
+    homepage: `${this.baseUrl}`,
+    news: `${this.baseUrl}/news`,
+    schedule: `${this.baseUrl}schedule`,
+    teachers: `${this.baseUrl}teachers`,
+    books: `${this.baseUrl}books`,
+    admin: {
+        status: `${this.adminBaseUrl}status`,
+        login: `${this.adminBaseUrl}login`,
+        logout: `${this.adminBaseUrl}logout`,
+        createPost: `${this.adminBaseUrl}news`
+    }
 }

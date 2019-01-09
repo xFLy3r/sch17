@@ -32,12 +32,11 @@ app.get(routes.books, (req, res) => {
 
 let isLogged = false;
 
-app.get(routes.adminStatus, (req, res) => {
-    console.log(isLogged);
+app.get(routes.admin.status, (req, res) => {
     res.send({ "isLogged": isLogged })
 });
 
-app.post(routes.adminLogin, (req, res) => {
+app.post(routes.admin.login, (req, res) => {
     if (req.body.login === adminCredentials.login &&
     req.body.password === adminCredentials.password && !isLogged) {
         isLogged = true;
@@ -45,7 +44,7 @@ app.post(routes.adminLogin, (req, res) => {
     isLogged ? res.sendStatus(200): res.sendStatus(500);
 });
 
-app.post(routes.adminLogout, (req, res) => {
+app.post(routes.admin.logout, (req, res) => {
     if (req.body.login === adminCredentials.login &&
         req.body.password === adminCredentials.password && isLogged) {
         isLogged = false;
@@ -53,7 +52,7 @@ app.post(routes.adminLogout, (req, res) => {
     }
 });
 
-app.post(routes.adminCreatePost, (req, res) => {
+app.post(routes.admin.createPost, (req, res) => {
     if (req.body.title === undefined || req.body.text === undefined || !isLogged) {
         res.sendStatus(500);
     } else if (isLogged) {
