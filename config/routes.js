@@ -2,10 +2,8 @@ this.baseUrl = '/api/';
 this.adminBaseUrl = `${this.baseUrl}admin/`;
 
 module.exports = {
-    baseUrl: this.baseUrl,
-    adminBaseUrl: this.adminBaseUrl,
-    homepage: `${this.baseUrl}`,
-    news: `${this.baseUrl}/news`,
+    homepage: this.baseUrl,
+    news: `${this.baseUrl}news`,
     schedule: `${this.baseUrl}schedule`,
     teachers: `${this.baseUrl}teachers`,
     books: `${this.baseUrl}books`,
