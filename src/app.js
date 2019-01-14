@@ -1,6 +1,7 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors')();
+const morgan = require('morgan');
 const config = require('../config/configuration.service');
 const routes = config.routes;
 const admin = routes.admin;
@@ -10,6 +11,7 @@ const data = require('./data');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors);
+app.use(morgan(':method :url :status - :response-time ms'));
 
 app.get(routes.homepage, (req, res) => {
     res.send({news: data['news']});
