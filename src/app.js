@@ -41,7 +41,6 @@ app.post(admin.login, (req, res) => {
     if (req.body.login === config.admin.login &&
     req.body.password === config.admin.password && !isLogged) {
         isLogged = true;
-        console.log(req.ip);
     }
     isLogged ? res.send({status: "OK"}).status(200):res.send({status: "Login or password is incorrect"}).status(500);
 });
