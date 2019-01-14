@@ -53,13 +53,21 @@ app.post(routes.admin.logout, (req, res) => {
     }
 });
 
-app.post(routes.admin.createPost, (req, res) => {
+app.post(routes.admin.news, (req, res) => {
     if (req.body.title === undefined || req.body.text === undefined || !isLogged) {
         res.sendStatus(500);
     } else if (isLogged) {
         data['news'].push({"title": req.body.title, "text": req.body.text, "date": Date()});
         res.status(202).send({"title": req.body.title, "text": req.body.text, "date": Date()});
     }
+});
+
+app.put(routes.admin.news, (req, res) => {
+    // TODO: Finish this route
+});
+
+app.delete(routes.admin.news, (req, res) => {
+    // TODO: Finish this route
 });
 
 // TODO: change hometasks or schedule

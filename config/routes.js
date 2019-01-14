@@ -11,6 +11,6 @@ module.exports = {
         status: `${this.adminBaseUrl}status`,
         login: `${this.adminBaseUrl}login`,
         logout: `${this.adminBaseUrl}logout`,
-        createPost: `${this.adminBaseUrl}news`
+        news: `${this.adminBaseUrl}news`
     }
 }
