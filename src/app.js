@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')();
 const config = require('../config/configuration.service');
 const routes = config.routes;
+const admin = routes.admin;
 
 const data = require('./data');
 
@@ -32,11 +33,11 @@ app.get(routes.books, (req, res) => {
 
 let isLogged = false;
 
-app.get(routes.admin.status, (req, res) => {
+app.get(admin.status, (req, res) => {
     res.send({ "isLogged": isLogged })
 });
 
-app.post(routes.admin.login, (req, res) => {
+app.post(admin.login, (req, res) => {
     if (req.body.login === config.admin.login &&
     req.body.password === config.admin.password && !isLogged) {
         isLogged = true;
@@ -45,7 +46,7 @@ app.post(routes.admin.login, (req, res) => {
     isLogged ? res.send({status: "OK"}).status(200):res.send({status: "Login or password is incorrect"}).status(500);
 });
 
-app.post(routes.admin.logout, (req, res) => {
+app.post(admin.logout, (req, res) => {
     if (req.body.login === config.admin.login &&
         req.body.password === config.admin.password && isLogged) {
         isLogged = false;
@@ -53,7 +54,7 @@ app.post(routes.admin.logout, (req, res) => {
     }
 });
 
-app.post(routes.admin.news, (req, res) => {
+app.post(admin.news, (req, res) => {
     if (req.body.title === undefined || req.body.text === undefined || !isLogged) {
         res.sendStatus(500);
     } else if (isLogged) {
@@ -62,11 +63,11 @@ app.post(routes.admin.news, (req, res) => {
     }
 });
 
-app.put(routes.admin.news, (req, res) => {
+app.put(admin.news, (req, res) => {
     // TODO: Finish this route
 });
 
-app.delete(routes.admin.news, (req, res) => {
+app.delete(admin.news, (req, res) => {
     // TODO: Finish this route
 });
 
