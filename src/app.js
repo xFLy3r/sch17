@@ -65,7 +65,16 @@ app.post(admin.news, (req, res) => {
 });
 
 app.put(admin.news, (req, res) => {
-    // TODO: Finish this route
+    data['news'].forEach((item) => {
+        if (item.date == req.body.date) {
+            if (item.title === req.body.title) {
+                item.title = req.body.newTitle;
+            } else if (item.text === req.body.text)
+                item.text = req.body.newText;
+            res.status(200).send({"status": "OK"});
+        }
+    });
+    res.status(200).send({});
 });
 
 app.delete(admin.news, (req, res) => {
