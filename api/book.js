@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
     Book.find({}, (err, books) => res.send({ books: books }));
 });
 
-module.exports = router.use('/book', router);
+module.exports = router.use('/books', router);

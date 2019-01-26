@@ -12,4 +12,4 @@ router.post('/', (req, res) => {
     res.send(201, { teacher: teacher })
 });
 
-module.exports = router.use('/teacher', router);
+module.exports = router.use('/teachers', router);

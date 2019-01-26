@@ -3,15 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors')();
 const morgan = require('morgan');
 const config = require('../config/configuration.service');
-const routes = config.routes;
-const admin = routes.admin;
+const admin = require('../admin/router');
 const mongoose = require('mongoose');
 const api = require('../api/router');
 mongoose.connect("mongodb://localhost:27017/sch");
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-const data = require('./data');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,54 +16,8 @@ app.use(cors);
 app.use(morgan(':method :url :status - :response-time ms'));
 
 app.use('/api', api);
+app.use('/api/admin', admin)
 
-let isLogged = true;
-
-app.get(admin.status, (req, res) => {
-    res.send({ "isLogged": isLogged })
-});
-
-app.post(admin.login, (req, res) => {
-    if (req.body.login === config.admin.login &&
-    req.body.password === config.admin.password && !isLogged) {
-        isLogged = true;
-    }
-    isLogged ? res.send({status: "OK"}).status(200):res.send({status: "Login or password is incorrect"}).status(500);
-});
-
-app.post(admin.logout, (req, res) => {
-    if (req.body.login === config.admin.login &&
-        req.body.password === config.admin.password && isLogged) {
-        isLogged = false;
-        res.sendStatus(200);
-    }
-});
-
-app.post(admin.news, (req, res) => {
-    if (req.body.title === undefined || req.body.text === undefined || !isLogged) {
-        res.sendStatus(500);
-    } else if (isLogged) {
-        data['news'].push({"title": req.body.title, "text": req.body.text, "date": Date()});
-        res.status(202).send({"title": req.body.title, "text": req.body.text, "date": Date()});
-    }
-});
-
-app.put(admin.news, (req, res) => {
-    data['news'].forEach((item) => {
-        if (item.date == req.body.date) {
-            if (item.title === req.body.title) {
-                item.title = req.body.newTitle;
-            } else if (item.text === req.body.text)
-                item.text = req.body.newText;
-            res.status(200).send({"status": "OK"});
-        }
-    });
-    res.status(200).send({});
-});
-
-app.delete(admin.news, (req, res) => {
-    // TODO: Finish this route
-});
 
 // TODO: change hometasks or schedule
 
