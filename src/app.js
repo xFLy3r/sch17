@@ -5,6 +5,11 @@ const morgan = require('morgan');
 const config = require('../config/configuration.service');
 const routes = config.routes;
 const admin = routes.admin;
+const mongoose = require('mongoose');
+const api = require('../api/router');
+mongoose.connect("mongodb://localhost:27017/sch");
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const data = require('./data');
 
@@ -13,27 +18,9 @@ app.use(bodyParser.json());
 app.use(cors);
 app.use(morgan(':method :url :status - :response-time ms'));
 
-app.get(routes.homepage, (req, res) => {
-    res.send({news: data['news']});
-});
+app.use('/api', api);
 
-app.get(routes.news, (req, res) => {
-    res.send({news: data['news']});
-});
-
-app.get(routes.schedule, (req, res) => {
-    res.send({schedule: data['schedule']});
-});
-
-app.get(routes.teachers, (req, res) => {
-    res.send({teachers: data['teachers']});
-});
-
-app.get(routes.books, (req, res) => {
-    res.send({books: data['books']});
-});
-
-let isLogged = false;
+let isLogged = true;
 
 app.get(admin.status, (req, res) => {
     res.send({ "isLogged": isLogged })
