@@ -6,7 +6,7 @@ const config = require('../config/configuration.service');
 const admin = require('../admin/router');
 const mongoose = require('mongoose');
 const api = require('../api/router');
-mongoose.connect("mongodb://localhost:27017/sch");
+mongoose.connect("mongodb://localhost:27017/sch17", { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 

@@ -3,7 +3,7 @@ var router = express.Router();
 const Schedule = require('../models/schedule');
 
 router.get('/', (req, res) => {
-    Schedule.find({}, (err, schedules) => res.send({ schedules: schedules }));
+    Schedule.find({}, (err, schedule) => res.send({ schedule: schedule }));
 });
 
 router.post('/', (req, res) => {

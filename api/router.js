@@ -1,13 +1,13 @@
 const newsApi = require('./news');
 const scheduleApi = require('./schedule');
-const teacherApi = require('./teacher');
-const bookApi = require('./book');
+const teachersApi = require('./teachers');
+const booksApi = require('./books');
 
 const api = [
     newsApi,
     scheduleApi,
-    teacherApi,
-    bookApi,
+    teachersApi,
+    booksApi,
 ];
 
 module.exports = api;
