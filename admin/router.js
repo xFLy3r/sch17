@@ -1,8 +1,8 @@
-const auth = require('./auth');
-const news = require('./news');
+const auth = require("./auth");
+const news = require("./news");
 const admin = [
-    auth,
-    news
+	auth,
+	news
 ];
 
 module.exports = admin;
