@@ -23,6 +23,6 @@ router.post('/logout', (req, res) => {
     }
 });
 
-module.exports = router.use('/', router);
+module.exports = router;
 
 // TODO: Add normal login page endpoint

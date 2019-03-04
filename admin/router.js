@@ -1,10 +1,8 @@
 const auth = require('./auth');
 const news = require('./news');
-const admin = [
-    auth,
-    news
-];
+const myApi = require('express').Router();
 
-module.exports = admin;
+myApi.use('/news', news);
+myApi.use('/auth', auth);
 
-// TODO: Make views for all admin routes
+module.exports = myApi;

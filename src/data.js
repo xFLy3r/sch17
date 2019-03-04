@@ -11,54 +11,71 @@ module.exports = {
             date: "24.10.2018"
         }
     ],
-    schedule: {
-        "Понеділок": [
-            { id: 1, name: "Алгебра", hometask: "" },
-            { id: 2, name: "Всесвітня Іст.", hometask: "§11 пункт 4 і 5 таблиця (ст 91) к. к. 3" },
-            { id: 3, name: "Англ. мовa", hometask: "" },
-            { id: 4, name: "Труди", hometask: "" },
-            { id: 5, name: "Фіз-ра", hometask: "" },
-            { id: 6, name: "Укр. мов.", hometask: "Семестровий Диктант" },
-            { id: 7, name: "Укр. літ.", hometask: "ст 113-117; ст 117 завдання 11.1 (п), 11.2 (у)" }
-        ],
-        "Вівторок": [
-            { id: 1, name: "Географія", hometask: "§23" },
-            { id: 2, name: "Хімія", hometask: "" },
-            { id: 3, name: "Інформатика", hometask: "" },
-            { id: 4, name: "Правознавство", hometask: "§10 ст 81 завдання 11 (п)" },
-            { id: 5, name: "Біологія", hometask: "§20-21 зошит ст 52" },
-            { id: 6, name: "Іспанська/Німецька", hometask: "" },
-            { id: 7, name: "Англ. мова", hometask: "" },
-            { id: 8, name: "Фіз-ра", hometask: "" }
-        ],
-        "Середа": [
-            { id: 1, name: "Англ. мова", hometask: "" },
-            { id: 2, name: "Укр. мова", hometask: "Есе матеріал (Чи можлива ідеальна дівчина на зразок Наталки Полтавки в сучасному світі?)" },
-            { id: 3, name: "Географія", hometask: "§24; взяти практичний зошит" },
-            { id: 4, name: "Фізика", hometask: "§17-18 вправ 18 завдання 1-3" },
-            { id: 5, name: "Геометрія", hometask: "№504 №510 №516 №518" },
-            { id: 6, name: "Хімія", hometask: "§17 ст 106 №199 з) ж) и) у)*" },
-            { id: 7, name: "Мистецтво", hometask: "" }
-        ],
-        "Четвер": [
-            { id: 1, name: "Алгебра", hometask: "№448 №454 №434" },
-            { id: 2, name: "Історія Укр.", hometask: "к/р §8-10; к. к. ст 6 (обидві)" },
-            { id: 3, name: "Фізика", hometask: "" },
-            { id: 4, name: "Англ. мова", hometask: "" },
-            { id: 5, name: "Зарубіжна", hometask: "" },
-            { id: 6, name: "Біологія", hometask: "§18-22 ст 109 завдання (п)" },
-            { id: 7, name: "Іспанська/Німецька", hometask: "" },
-        ],
-        "П'ятниця": [
-            { id: 1, name: "Укр. літ.", hometask: "Ідейно художній аналіз Наталка Полтавка; Образ Наталки та свого персонажа" },
-            { id: 2, name: "Фізика", hometask: "" },
-            { id: 3, name: "Інформатика", hometask: "" },
-            { id: 4, name: "Англ. мова", hometask: "" },
-            { id: 5, name: "Геометрія", hometask: "" },
-            { id: 6, name: "Фіз-ра", hometask: "" },
-            { id: 7, name: "Зарубіжна", hometask: "" }
+    schedule: [
+        [
+            {
+                "weekday": "Понеділок",
+                "data": [
+                    { id: 1, name: "Алгебра", hometask: "" },
+                    { id: 2, name: "Всесвітня Іст.", hometask: "§11 пункт 4 і 5 таблиця (ст 91) к. к. 3" },
+                    { id: 3, name: "Англ. мовa", hometask: "" },
+                    { id: 4, name: "Труди", hometask: "" },
+                    { id: 5, name: "Фіз-ра", hometask: "" },
+                    { id: 6, name: "Укр. мов.", hometask: "Семестровий Диктант" },
+                    { id: 7, name: "Укр. літ.", hometask: "ст 113-117; ст 117 завдання 11.1 (п), 11.2 (у)" }
+                ]
+            },
+            {
+                "weekday": "Вівторок",
+                "data": [
+                    { id: 1, name: "Географія", hometask: "§23" },
+                    { id: 2, name: "Хімія", hometask: "" },
+                    { id: 3, name: "Інформатика", hometask: "" },
+                    { id: 4, name: "Правознавство", hometask: "§10 ст 81 завдання 11 (п)" },
+                    { id: 5, name: "Біологія", hometask: "§20-21 зошит ст 52" },
+                    { id: 6, name: "Іспанська/Німецька", hometask: "" },
+                    { id: 7, name: "Англ. мова", hometask: "" },
+                    { id: 8, name: "Фіз-ра", hometask: "" }
+                ]
+            },
+            {
+                "weekday": "Середа",
+                "data": [
+                    { id: 1, name: "Англ. мова", hometask: "" },
+                    { id: 2, name: "Укр. мова", hometask: "Есе матеріал (Чи можлива ідеальна дівчина на зразок Наталки Полтавки в сучасному світі?)" },
+                    { id: 3, name: "Географія", hometask: "§24; взяти практичний зошит" },
+                    { id: 4, name: "Фізика", hometask: "§17-18 вправ 18 завдання 1-3" },
+                    { id: 5, name: "Геометрія", hometask: "№504 №510 №516 №518" },
+                    { id: 6, name: "Хімія", hometask: "§17 ст 106 №199 з) ж) и) у)*" },
+                    { id: 7, name: "Мистецтво", hometask: "" }
+                ]
+            },
+            {
+                "weekday": "Четвер",
+                "data": [
+                    { id: 1, name: "Алгебра", hometask: "№448 №454 №434" },
+                    { id: 2, name: "Історія Укр.", hometask: "к/р §8-10; к. к. ст 6 (обидві)" },
+                    { id: 3, name: "Фізика", hometask: "" },
+                    { id: 4, name: "Англ. мова", hometask: "" },
+                    { id: 5, name: "Зарубіжна", hometask: "" },
+                    { id: 6, name: "Біологія", hometask: "§18-22 ст 109 завдання (п)" },
+                    { id: 7, name: "Іспанська/Німецька", hometask: "" },
+                ]
+            },
+            {
+                "weekday": "П'ятниця",
+                "data": [
+                    { id: 1, name: "Укр. літ.", hometask: "Ідейно художній аналіз Наталка Полтавка; Образ Наталки та свого персонажа" },
+                    { id: 2, name: "Фізика", hometask: "" },
+                    { id: 3, name: "Інформатика", hometask: "" },
+                    { id: 4, name: "Англ. мова", hometask: "" },
+                    { id: 5, name: "Геометрія", hometask: "" },
+                    { id: 6, name: "Фіз-ра", hometask: "" },
+                    { id: 7, name: "Зарубіжна", hometask: "" }
+                ]
+            }
         ]
-    },
+    ],
     teachers: [
         { name: "Тихоненко Аліна Миколаївна", subject: "Інформатика" },
         { name: "Саражинський Микола Олександрович", subject: "Інформатика" },
@@ -102,5 +119,3 @@ module.exports = {
         { image: "http://4book.org/photo/5970/8779/d13f/4a4e/f229/33a7/big_abda66d64de.jpg?1500546937", title: "Хімія", source: "https://filemanagersch17.000webhostapp.com/Chemistry.zip" }
     ]
 }
-
-// TODO: restructure data in data.js
