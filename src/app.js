@@ -22,3 +22,7 @@ app.use('/admin', admin);
 // TODO: change hometasks or schedule
 
 app.listen(config.application.port, () => { console.log(`application is running on port ${config.application.port}.`) });
+
+
+// TODO: fix routes by using useful links
+// TODO: export data from data.js

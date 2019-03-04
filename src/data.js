@@ -102,3 +102,5 @@ module.exports = {
         { image: "http://4book.org/photo/5970/8779/d13f/4a4e/f229/33a7/big_abda66d64de.jpg?1500546937", title: "Хімія", source: "https://filemanagersch17.000webhostapp.com/Chemistry.zip" }
     ]
 }
+
+// TODO: restructure data in data.js

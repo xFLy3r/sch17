@@ -7,3 +7,5 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router.use('/news', router);
+
+// TODO: make idempotent requests(except DELETE)

@@ -6,3 +6,5 @@ const admin = [
 ];
 
 module.exports = admin;
+
+// TODO: Make views for all admin routes

@@ -13,3 +13,6 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router.use('/teachers', router);
+
+// TODO: make idempotent requests(except DELETE)
+// TODO: move POST request to admin

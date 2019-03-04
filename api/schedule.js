@@ -13,3 +13,5 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router.use('/schedule', router);
+
+// TODO: make idempotent requests(except DELETE)
