@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 var router = express.Router();
-const Schedule = require('../models/schedule');
+const Schedule = require("../models/schedule");
 
 router.route('/')
   .all((req, res, next) => {

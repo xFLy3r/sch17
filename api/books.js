@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 var router = express.Router();
-const Books = require('../models/books');
+const Books = require("../models/books");
 
 router.route('/')
   .all((req, res, next) => {
@@ -11,6 +11,3 @@ router.route('/')
   });
 
 module.exports = router;
-
-
-// TODO: make idempotent requests(except DELETE)

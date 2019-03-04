@@ -11,5 +11,3 @@ router.route('/')
   });
 
 module.exports = router;
-
-// TODO: make idempotent requests(except DELETE)

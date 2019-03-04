@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 var router = express.Router();
-const Teachers = require('../models/teachers');
+const Teachers = require("../models/teachers");
 
 router.route('/')
   .all((req, res, next) => {
