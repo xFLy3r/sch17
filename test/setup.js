@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 beforeAll(async (done) => {
   await mongoose
-    .connect('mongodb://localhost:27017/testsch17', { useNewUrlParser: true })
+    .connect('mongodb://mongodb:27017/testsch17', { useNewUrlParser: true })
     .then((r) => {
       clearDatabase();
       return done();
