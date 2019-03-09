@@ -59,7 +59,13 @@ router.route('/:newsId')
     // TODO: Finish this route
   })
   .delete((req, res, next) => {
-    News.deleteOne({_id : req.news._id }, (err, res) => res.send({ 'message': 'Deleted!' }))
+    News.findByIdAndDelete(req.news._id, (e, r) => {
+      if (!e) {
+        res.send({ message: `News with id ${req.news._id} was successfully deleted.` })
+      } else {
+        res.status(500).send({ message: 'Something went wrong.' })
+      }
+    })
   });
 
 module.exports = router;

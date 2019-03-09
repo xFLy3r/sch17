@@ -99,4 +99,38 @@ describe('GET /admin/news/:id', () => {
           });
       });
   });
+
+});
+
+describe('DELETE /admin/news/:id', () => {
+
+  it('should return status code 404 and message "not found"', (done) => {
+    crequest
+      .delete('/admin/news/1')
+      .set('Accept', 'application/json')
+      .expect(404)
+      .then(r => {
+        assert.equal(r.body.message, 'Not found');
+        done();
+      })
+  });
+
+  it('should return status code 200 and response with one item', (done) => {
+    crequest
+      .post('/admin/news')
+      .send({ title: 'test title', message: 'test text'})
+      .set('Accept', 'application/json')
+      .then(r => {
+        crequest
+          .delete(`/admin/news/${r.body._id}`)
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .then(res => {
+            assert.equal(res.body.message, `News with id ${r.body._id} was successfully deleted.`);
+            done();
+          });
+      });
+  });
+
 });
