@@ -20,7 +20,6 @@ describe('GET /api/news', () => {
   it('should return status code 200 and response with one item', (done) => {
    crequest
       .post('/admin/news')
-      .type('form')
       .send({ title: 'test title', message: 'test text' })
       .set('Accept', 'application/json')
       .expect(201)
@@ -41,10 +40,25 @@ describe('GET /api/news', () => {
 
 describe('POST /admin/news', () => {
 
+  it('should error if title is not passed', (done) => {
+    crequest
+      .post('/admin/news')
+      .send({ text: 'test text' })
+      .set('Accept', 'application/json')
+      .expect(422)
+      .then(r => {
+        assert.deepEqual(r.body, {
+          errors: ['"message" is required.', '"title" is required.']
+        });
+        assert.strictEqual(r.body.errors.length, 2);
+        done();
+      })
+  });
+
   it('should return status code 201 and created news', (done) => {
     crequest
       .post('/admin/news')
-      .send({title: 'test title', 'text': 'test text'})
+      .send({ title: 'test title', message: 'test text' })
       .set('Accept', 'application/json')
       .expect(201)
       .then(r => {
@@ -52,6 +66,7 @@ describe('POST /admin/news', () => {
         done();
       })
   })
+
 });
 
 describe('GET /admin/news/:id', () => {
@@ -59,7 +74,6 @@ describe('GET /admin/news/:id', () => {
   it('should return status code 404 and message "not found"', (done) => {
     crequest
       .get('/admin/news/1')
-      .send({title: 'test title', 'text': 'test text'})
       .set('Accept', 'application/json')
       .expect(404)
       .then(r => {
@@ -71,7 +85,7 @@ describe('GET /admin/news/:id', () => {
   it('should return status code 200 and response with one item', (done) => {
     crequest
       .post('/admin/news')
-      .send({title: 'test title', 'text': 'test text'})
+      .send({ title: 'test title', message: 'test text'})
       .set('Accept', 'application/json')
       .then(r => {
         crequest

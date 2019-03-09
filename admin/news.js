@@ -2,6 +2,12 @@ const express = require('express');
 var router = express();
 const News = require('../models/news');
 
+let getValidationErrors = (errors) => {
+  let newErrors = [];
+  for (let error in errors)
+    newErrors.push(errors[error].message);
+  return newErrors;
+};
 
 router.route('/')
   .all((req, res, next) => {
@@ -12,8 +18,13 @@ router.route('/')
   })
   .post((req, res) => {
       let news = new News(req.body);
-      news.save();
-      res.status(201).send(news)
+      news.save((err) => {
+        if (err) {
+          res.status(422).send({ errors: getValidationErrors(err.errors)});
+        } else {
+          res.status(201).send(news);
+        }
+      });
   });
 
 router.param('newsId', (req, res, next, id) => {
