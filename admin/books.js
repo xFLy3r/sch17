@@ -7,7 +7,7 @@ router.route('/')
     next();
   })
   .get((req, res) => {
-    Book.find({}, (err, books) => res.send({ books: books}));
+    Book.find({}, (err, books) => res.send({ books: books }));
   });
 
 module.exports = router;

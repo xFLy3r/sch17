@@ -1,6 +1,7 @@
 {
   "name": "sch17",
   "version": "1.0.0",
+  "jest": {},
   "description": "",
   "main": "src/app.js",
   "scripts": {
@@ -20,7 +21,8 @@
   "homepage": "https://github.com/f0s3/sch17#readme",
   "devDependencies": {
     "jest": "^24.1.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "supertest": "^3.4.2"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
