@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/f0s3/sch17#readme",
   "devDependencies": {
+    "eslint": "^5.15.0",
     "jest": "^24.1.0",
     "mocha": "^5.2.0",
     "supertest": "^3.4.2"

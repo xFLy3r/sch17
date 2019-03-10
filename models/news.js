@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const newsSchema = new Schema({
@@ -13,4 +13,4 @@ const newsSchema = new Schema({
   date: Date
 });
 
-module.exports = mongoose.model('News', newsSchema);
+module.exports = mongoose.model("News", newsSchema);

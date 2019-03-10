@@ -1,8 +1,8 @@
 const auth = require('./auth');
 const news = require('./news');
-const myApi = require('express').Router();
+const admin = require('express').Router();
 
-myApi.use('/news', news);
-myApi.use('/auth', auth);
+admin.use('/news', news);
+admin.use('/auth', auth);
 
-module.exports = myApi;
+module.exports = admin;
