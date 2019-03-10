@@ -4,12 +4,11 @@ const News = require('../models/news');
 
 router.route('/')
   .all((req, res, next) => {
-      next();
+    next();
   })
   .get((req, res) => {
-      News.find({}, (err, news) => res.send({ news: news }));
+    News.find({}, '-__v', (err, news) => res.send({ news: news }));
   });
 
 module.exports = router;
 
-// TODO: make idempotent requests(except DELETE)

@@ -7,9 +7,7 @@ router.route('/')
     next();
   })
   .get((req, res) => {
-    Schedule.find({}, (err, schedule) => res.send({schedule: schedule}));
+    Schedule.find({}, '-__v', (err, schedule) => res.send({ schedule: schedule}));
   });
 
 module.exports = router;
-
-// TODO: make idempotent requests(except DELETE)
