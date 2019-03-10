@@ -3,34 +3,34 @@ const crequest = require('./request');
 
 jest.setTimeout(20000);
 
-describe('GET /admin/news', () => {
+describe('GET /admin/books', () => {
 
   it('should return status code 200 and empty response', (done) => {
     crequest
-      .get('/admin/news')
+      .get('/admin/books')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(r => {
-        assert.equal(r.body.news.length, 0);
+        assert.equal(r.body.books.length, 0);
         done();
       });
   });
 
   it('should return status code 200 and response with one item', (done) => {
-   crequest
-      .post('/admin/news')
-      .send({ title: 'test title', message: 'test text' })
+    crequest
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .expect(201)
       .then(_=> {
         crequest
-          .get('/admin/news')
+          .get('/admin/books')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
           .then(r => {
-            assert.equal(r.body.news.length, 1);
+            assert.equal(r.body.books.length, 1);
             done();
           });
       });
@@ -38,27 +38,31 @@ describe('GET /admin/news', () => {
 
 });
 
-describe('POST /admin/news', () => {
+describe('POST /admin/books', () => {
 
-  it('should error if title and message are not passed', (done) => {
+  it('should error if title, source path and image path are not passed', (done) => {
     crequest
-      .post('/admin/news')
+      .post('/admin/books')
       .send({})
       .set('Accept', 'application/json')
       .expect(422)
       .then(r => {
         assert.deepEqual(r.body, {
-          errors: ['"message" is required.', '"title" is required.']
+          errors: [
+            '"image path" is required.',
+            '"source path" is required.',
+            '"title" is required.',
+          ]
         });
-        assert.strictEqual(r.body.errors.length, 2);
+        assert.strictEqual(r.body.errors.length, 3);
         done();
       })
   });
 
   it('should error if title is not passed', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ message: 'test text' })
+      .post('/admin/books')
+      .send({ sourcePath: 'test text', imagePath: 'path' })
       .set('Accept', 'application/json')
       .expect(422)
       .then(r => {
@@ -70,10 +74,10 @@ describe('POST /admin/news', () => {
       })
   });
 
-  it('should return status code 201 and created news', (done) => {
+  it('should return status code 201 and id of created book', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'test title', message: 'test text' })
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .expect(201)
       .then(r => {
@@ -84,11 +88,11 @@ describe('POST /admin/news', () => {
 
 });
 
-describe('GET /admin/news/:id', () => {
+describe('GET /admin/books/:id', () => {
 
   it('should return status code 404 and message "not found"', (done) => {
     crequest
-      .get('/admin/news/5c8452e2ec530f00109d92cc')
+      .get('/admin/books/5c8452e2ec530f00109d92cc')
       .set('Accept', 'application/json')
       .expect(404)
       .then(r => {
@@ -99,17 +103,22 @@ describe('GET /admin/news/:id', () => {
 
   it('should return status code 200 and response with one item', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'test title', message: 'test text'})
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .then(r => {
         crequest
-          .get(`/admin/news/${r.body._id}`)
+          .get(`/admin/books/${r.body._id}`)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
           .then(res => {
-            assert.equal(r._id, res._id);
+            assert.equal(r.body._id, res.body._id);
+            assert.deepStrictEqual(res.body, {
+              _id: r.body._id,
+              title: 'test title',
+              sourcePath: 'testPath',
+              imagePath: 'example.com/super.jpg' });
             done();
           });
       });
@@ -117,11 +126,11 @@ describe('GET /admin/news/:id', () => {
 
 });
 
-describe('PUT /admin/news/:id', () => {
+describe('PUT /admin/books/:id', () => {
 
   it('should return status code 404 and message "not found"', (done) => {
     crequest
-      .put('/admin/news/1')
+      .put('/admin/books/1')
       .set('Accept', 'application/json')
       .expect(404)
       .then(r => {
@@ -130,21 +139,21 @@ describe('PUT /admin/news/:id', () => {
       })
   });
 
-  it('should return status code 422 and response with error if message is not passed', (done) => {
+  it('should return status code 422 and response with error if sourcePath is not passed', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'old title', message: 'old message'})
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .then(r => {
         crequest
-          .put(`/admin/news/${r.body._id}`)
-          .send({ title: 'new title' })
+          .put(`/admin/books/${r.body._id}`)
+          .send({ title: 'new title', imagePath:'example.com/super.jpg' })
           .set('Accept', 'application/json')
           // .expect('Content-Type', /json/)
           .expect(422)
           .then(res => {
             assert.deepEqual(res.body, {
-              errors: ['"message" is required.']
+              errors: ['"source path" is required.']
             });
             assert.strictEqual(res.body.errors.length, 1);
             done();
@@ -152,47 +161,49 @@ describe('PUT /admin/news/:id', () => {
       });
   });
 
-  it('should return status code 422 and response with error if title and message are not passed', (done) => {
+  it('should return status code 422 and response with error if anything is not passed', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'old title', message: 'old message'})
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .then(r => {
         crequest
-          .put(`/admin/news/${r.body._id}`)
+          .put(`/admin/books/${r.body._id}`)
           .send({})
           .set('Accept', 'application/json')
           .expect(422)
           .then(res => {
             assert.deepStrictEqual(res.body.errors, [
               '"title" is required.',
-              '"message" is required.'
+              '"source path" is required.',
+              '"image path" is required.'
             ]);
-            assert.strictEqual(res.body.errors.length, 2);
+            assert.strictEqual(res.body.errors.length, 3);
             done();
           });
       });
   });
 
-  it('should modify news if title and message passed', (done) => {
+  it('should modify book if all data is passed', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'old title', message: 'old message'})
+      .post('/admin/books')
+      .send({ title: 'old title', sourcePath: 'old message', imagePath: 'path'})
       .set('Accept', 'application/json')
       .then(r => {
         crequest
-          .put(`/admin/news/${r.body._id}`)
-          .send({ title: 'new title', message: 'new message' })
+          .put(`/admin/books/${r.body._id}`)
+          .send({ title: 'new title', sourcePath: 'new message', imagePath: 'path' })
           .set('Accept', 'application/json')
           .expect(204)
           .then(_ => {
             crequest
-              .get(`/admin/news/${r.body._id}`)
+              .get(`/admin/books/${r.body._id}`)
               .set('Accept', 'application/json')
               .expect(200)
               .then(res => {
                 assert.equal(res.body.title, 'new title');
-                assert.equal(res.body.message, 'new message');
+                assert.equal(res.body.sourcePath, 'new message');
+                assert.equal(res.body.imagePath, 'path');
                 done();
               })
           });
@@ -202,11 +213,11 @@ describe('PUT /admin/news/:id', () => {
 
 });
 
-describe('DELETE /admin/news/:id', () => {
+describe('DELETE /admin/books/:id', () => {
 
   it('should return status code 404 and message "not found"', (done) => {
     crequest
-      .delete('/admin/news/5c8452e2ec530f00109d92cc')
+      .delete('/admin/books/5c8452e2ec530f00109d92cc')
       .set('Accept', 'application/json')
       .expect(404)
       .then(r => {
@@ -215,23 +226,23 @@ describe('DELETE /admin/news/:id', () => {
       })
   });
 
-  it('should return status code 404 when try to get deleted news', (done) => {
+  it('should return status code 404 when try to get deleted book', (done) => {
     crequest
-      .post('/admin/news')
-      .send({ title: 'test title', message: 'test text'})
+      .post('/admin/books')
+      .send({ title: 'test title', sourcePath: 'testPath', imagePath: 'example.com/super.jpg' })
       .set('Accept', 'application/json')
       .then(r => {
         crequest
-          .delete(`/admin/news/${r.body._id}`)
+          .delete(`/admin/books/${r.body._id}`)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
           .then(res => {
-            assert.equal(res.body.message, `News with id ${r.body._id} was successfully deleted.`);
+            assert.equal(res.body.message, `Book with id ${r.body._id} was successfully deleted.`);
             crequest
-              .get(`/admin/news/${r.body._id}`)
+              .get(`/admin/books/${r.body._id}`)
               .expect(404)
-              .then(response => {
+              .then(_=> {
                   done();
                 }
               );
