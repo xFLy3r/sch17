@@ -28,10 +28,11 @@ router.route('/')
   });
 
 router.param('newsId', (req, res, next, id) => {
-  News.findById(id, '-__v', (err, news) => {
-    req.news = news;
-    if (err) {
+  News.findById(id, '-__v', (err, news) => { //TODO: FIX THIS
+    if (err || !news) {
       res.status(404).send({ message: 'Not found' });
+    } else {
+      req.news = news;
     }
     next();
   });
@@ -45,21 +46,19 @@ router.route('/:newsId')
     res.send(req.news);
   })
   .put((req, res, next) => {
-    // data['news'].forEach((item) => {
-    //   if (item.date == req.body.date) {
-    //     if (item.title === req.body.title) {
-    //       item.title = req.body.newTitle;
-    //     } else if (item.text === req.body.text) {
-    //       item.text = req.body.newText;
-    //     }
-    //     res.status(200).send({"status": "OK"});
-    //   }
-    // });
-    // res.status(200).send({});
-    // TODO: Finish this route
+    let news = req.news;
+    news.title = req.body.title;
+    news.message = req.body.message;
+    news.save((err) => {
+      if (err) {
+        res.status(422).send({ errors: getValidationErrors(err.errors)});
+      } else {
+        res.status(204).send({});
+      }
+    });
   })
   .delete((req, res, next) => {
-    News.findByIdAndDelete(req.news._id, (e, r) => {
+    News.deleteOne({ _id: req.news._id }, (e, r) => {
       if (!e) {
         res.send({ message: `News with id ${req.news._id} was successfully deleted.` })
       } else {
