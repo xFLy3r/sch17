@@ -30,6 +30,9 @@ jobs: # a collection of steps
        #   key: dependency-cache-{{ checksum "package.json" }}
         #  paths:
          #   - ./node_modules
+      - run: 
+          name: builddocker
+          command: docker-compose build api
       - run: # run tests
           name: test
           command: docker-compose run api bash -c "npm run test -- --runInBand"
