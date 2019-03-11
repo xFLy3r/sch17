@@ -14,25 +14,25 @@ jobs: # a collection of steps
               curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
               chmod +x ~/docker-compose
               sudo mv ~/docker-compose /usr/local/bin/docker-compose
-      - run:
-          name: mongodb-run
-          command: docker run --name mongodb -p 27018:27017 -d mongo:3.4.4 mongod --port 27017
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache: # special step to restore the dependency cache
+      #- run:
+       #   name: mongodb-run
+        #  command: docker run --name mongodb -p 27018:27017 -d mongo:3.4.4 mongod --port 27017
+     # - run:
+      #    name: update-npm
+       #   command: 'sudo npm install -g npm@latest'
+      #- restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-npm-wee
-          command: npm install
+       #   key: dependency-cache-{{ checksum "package.json" }}
+      #- run:
+       #   name: install-npm-wee
+        #  command: npm install
       #- save_cache: # special step to save the dependency cache
        #   key: dependency-cache-{{ checksum "package.json" }}
         #  paths:
          #   - ./node_modules
       - run: 
           name: builddocker
-          command: docker-compose build api
+          command: docker-compose up --build api
       - run: # run tests
           name: test
           command: docker-compose run api bash -c "npm run test -- --runInBand"
