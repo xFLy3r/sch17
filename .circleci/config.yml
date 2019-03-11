@@ -7,6 +7,7 @@ jobs: # a collection of steps
       - image: mongo:3.4.4 # and this image as the secondary service container
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
+      - setup_remote_docker
       - run:
           name: Install Docker Compose
           command: |
