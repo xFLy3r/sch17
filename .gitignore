@@ -1,4 +1,5 @@
 node_modules/
-src/data.js
+data/
 package-lock.json
 config/admin.js
+.idea/
