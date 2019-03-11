@@ -33,7 +33,7 @@ jobs: # a collection of steps
       - run: 
           name: builddocker
           command: docker-compose up --build api
-       -run:
+      - run:
           name: ls
           command: ls
       - run: # run tests
